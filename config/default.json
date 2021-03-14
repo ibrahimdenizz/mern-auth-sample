@@ -1,0 +1,8 @@
+{
+    "jwtPrivateKey": "12345",
+    "emailSecretKey": "12345",
+    "emailUser": "",
+    "emailPass": "",
+    "emailService": "",
+    "url":"http://localhost:3000"
+}

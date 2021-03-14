@@ -1,0 +1,8 @@
+{
+    "jwtPrivateKey" : "auth_jwtPrivateKey",
+    "emailSecretKey": "auth_emailSecretKey",
+    "emailUser": "auth_emailUser",
+    "emailPass": "auth_emailPass",
+    "emailService": "auth_emailService",
+    "url": "auth_url"
+}
