@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "client": "cd client/ && npm start",
-    "server": "nodemon index.js"
+    "server": "nodemon index.js",
+    "start": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "concurrently": "^6.0.2",
     "config": "^3.3.4",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -19,6 +21,7 @@
     "joi": "^17.4.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.18",
-    "nodemailer": "^6.5.0"
+    "nodemailer": "^6.5.0",
+    "nodemon": "^2.0.7"
   }
 }
