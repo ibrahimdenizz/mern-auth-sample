@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Email from './Email';
 import Password from './Password';
 import Personal from './Personal';
+import { UserContext } from '../../contexts/UserContext';
 
-const User = ({ user, setUser }) => {
+const User = () => {
+  const [user, setUser] = useContext(UserContext);
   const [isEditable, setIsEditable] = useState({
     profile: false,
     email: false,

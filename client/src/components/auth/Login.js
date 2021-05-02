@@ -10,7 +10,7 @@ const schema = Joi.object({
   password: Joi.string().required(),
 });
 
-const Login = ({ user, setUser }) => {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
@@ -59,13 +59,13 @@ const Login = ({ user, setUser }) => {
   useEffect(() => {
     const login = async () => {
       const token = auth.getJwt();
-      if (token && !user) {
+      if (token) {
         sessionStorage.setItem('token', token);
         window.location = '/';
       }
     };
     login();
-  }, [user]);
+  }, []);
 
   return (
     <div className="container h-100">

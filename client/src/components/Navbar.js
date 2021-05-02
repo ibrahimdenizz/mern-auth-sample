@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { UserContext } from '../contexts/UserContext';
 
-const Navbar = ({ user }) => {
+const Navbar = () => {
+  const [user] = useContext(UserContext);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
       <div className="container-fluid">
@@ -14,7 +16,7 @@ const Navbar = ({ user }) => {
             <ul className="navbar-nav">
               <li className="nav-item">
                 <NavLink className="nav-link active" to="/user">
-                  {user.name}
+                  {user?.name}
                 </NavLink>
               </li>
               <li className="nav-item">
