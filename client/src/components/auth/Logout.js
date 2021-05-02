@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react'
-import * as auth from '../../services/authService'
+import React, { useEffect } from 'react';
+import * as auth from '../../services/authService';
 
 const Logout = () => {
   useEffect(() => {
-    auth.logout()
-    window.location = '/'
-  })
+    auth.logout();
+    window.location = '/';
+  });
 
-  return <div></div>
-}
+  return <div></div>;
+};
 
-export default Logout
+export default Logout;

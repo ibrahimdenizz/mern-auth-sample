@@ -1,80 +1,80 @@
-import './App.css'
-import { Fragment, useEffect, useState } from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom'
-import * as auth from './services/authService'
-import Login from './components/auth/Login'
-import Register from './components/auth/Register'
-import Homepage from './components/Homepage'
-import NotFound from './components/NotFound'
-import Logout from './components/auth/Logout'
-import Navbar from './components/Navbar'
-import Profile from './components/profile/Profile'
-import InvalidToken from './components/InvalidToken'
-import ForgotPassword from './components/auth/ForgotPassword'
-import ResetPassword from './components/auth/ResetPassword'
+import './App.css';
+import { Fragment, useEffect, useState } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import * as auth from './services/authService';
+import Login from './components/auth/Login';
+import Register from './components/auth/Register';
+import Homepage from './components/Homepage';
+import NotFound from './components/NotFound';
+import Logout from './components/auth/Logout';
+import Navbar from './components/Navbar';
+import Profile from './components/profile/Profile';
+import InvalidToken from './components/InvalidToken';
+import ForgotPassword from './components/auth/ForgotPassword';
+import ResetPassword from './components/auth/ResetPassword';
 
 function App() {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const login = async () => {
-      const token = auth.getJwtWithSession()
+      const token = auth.getJwtWithSession();
       if (token) {
         try {
-          const currentUser = await auth.loginWithJwt()
-          setUser(currentUser)
+          const currentUser = await auth.loginWithJwt();
+          setUser(currentUser);
         } catch (error) {}
       }
-    }
-    login()
-  }, [])
+    };
+    login();
+  }, []);
 
   return (
     <Fragment>
       <Navbar user={user} />
       <Switch>
-        <Route path='/login'>
+        <Route path="/login">
           <Login user={user} setUser={setUser} />
         </Route>
 
-        <Route path='/register'>
+        <Route path="/register">
           <Register />
         </Route>
 
-        <Route path='/forgot-password'>
+        <Route path="/forgot-password">
           <ForgotPassword />
         </Route>
 
-        <Route path='/reset-password/:token'>
+        <Route path="/reset-password/:token">
           <ResetPassword />
         </Route>
 
-        <Route path='/invalid-token'>
+        <Route path="/invalid-token">
           <InvalidToken />
         </Route>
 
-        <Route path='/not-found'>
+        <Route path="/not-found">
           <NotFound />
         </Route>
 
-        {auth.getJwtWithSession() ? '' : <Redirect to='/login' />}
+        {auth.getJwtWithSession() ? '' : <Redirect to="/login" />}
 
-        <Route path='/logout'>
+        <Route path="/logout">
           <Logout />
         </Route>
 
-        <Route path='/user'>
+        <Route path="/user">
           <Profile user={user ? user : { name: '' }} setUser={setUser} />
         </Route>
 
-        <Route exact path='/'>
+        <Route exact path="/">
           <Homepage user={user} setUser={setUser} />
         </Route>
 
-        <Redirect to='/not-found' />
+        <Redirect to="/not-found" />
       </Switch>
     </Fragment>
-  )
+  );
 }
 
-export default App
+export default App;
