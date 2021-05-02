@@ -1,3 +1,4 @@
+require('dotenv').config();
 const forgotPassword = require('./routers/forgotPassword');
 const users = require('./routers/users');
 const auth = require('./routers/auth');
