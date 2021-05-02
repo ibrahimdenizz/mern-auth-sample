@@ -34,7 +34,7 @@ const Email = ({ isEditable, setIsEditable, user }) => {
 
     try {
       const result = await changeEmail(newEmail, {
-        email: user.email,
+        email: user?.email,
         password,
       });
       setEmailErrors({ ...emailErrors, warning: result.warning });
@@ -76,7 +76,7 @@ const Email = ({ isEditable, setIsEditable, user }) => {
               className={`form-control ${
                 emailErrors.email === '' ? '' : 'is-invalid'
               }`}
-              placeholder={user.email}
+              placeholder={user?.email}
               value={newEmail}
               onChange={(e) => setNewEmail(e.target.value)}
             />
@@ -117,7 +117,7 @@ const Email = ({ isEditable, setIsEditable, user }) => {
       ) : (
         <Fragment>
           <div className="text-warning">{emailErrors.warning}</div>
-          <p>{user.email}</p>
+          <p>{user?.email}</p>
           <button
             onClick={() => {
               setIsEditable({

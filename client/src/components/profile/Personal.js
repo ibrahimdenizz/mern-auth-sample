@@ -12,7 +12,7 @@ const Personal = ({ isEditable, setIsEditable, user, setUser }) => {
     success: '',
   });
   useEffect(() => {
-    setNewName(user.name);
+    setNewName(user?.name);
   }, [user]);
 
   const onEdit = async () => {
@@ -36,7 +36,7 @@ const Personal = ({ isEditable, setIsEditable, user, setUser }) => {
     try {
       const result = await editProfile(
         { name: newName },
-        { email: user.email, password }
+        { email: user?.email, password }
       );
       setProfileErrors({ ...profileErrors, success: result.success });
       setIsEditable({ ...isEditable, profile: false });
@@ -54,7 +54,7 @@ const Personal = ({ isEditable, setIsEditable, user, setUser }) => {
   };
 
   const clearStates = () => {
-    setNewName(user.name);
+    setNewName(user?.name);
     setPassword('');
 
     setProfileErrors({
@@ -79,7 +79,7 @@ const Personal = ({ isEditable, setIsEditable, user, setUser }) => {
               className={`form-control ${
                 profileErrors.name === '' ? '' : 'is-invalid'
               }`}
-              placeholder={user.name}
+              placeholder={user?.name}
               value={newName}
               onChange={(e) => setNewName(e.target.value)}
             />
@@ -123,7 +123,7 @@ const Personal = ({ isEditable, setIsEditable, user, setUser }) => {
         <Fragment>
           <div className=" text-success">{profileErrors.success}</div>
           <h4>Name</h4>
-          <p>{user.name}</p>
+          <p>{user?.name}</p>
           <button
             onClick={() => {
               setIsEditable({

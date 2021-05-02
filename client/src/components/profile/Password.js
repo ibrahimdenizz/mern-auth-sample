@@ -48,7 +48,7 @@ const Password = ({ isEditable, setIsEditable, user }) => {
 
     try {
       const result = await changePassword(newPassword, {
-        email: user.email,
+        email: user?.email,
         password,
       });
 
